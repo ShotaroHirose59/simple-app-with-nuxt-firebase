@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 
 export default {
   mode: 'spa',
@@ -38,6 +39,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/dotenv'
   ],
   /*
   ** Build configuration
@@ -47,6 +49,11 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
+      })
+    ]
   }
 }
